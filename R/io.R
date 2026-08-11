@@ -112,7 +112,7 @@ read_hurdat = function(form = c("point", "linestring")[1]){
   filename = switch(tolower(form[1]),
                     "point"= system.file("extdata/hurdat2-1851-2025-02272026.rds",
                                          package = "hurdat2"),
-                    "linestring" = system.file("extdata/linestring.rds",
+                    "linestring" = system.file("extdata/linestrings.rds",
                                                 package = "hurdat2"),
                     stop("form not known:", form[1]))
   

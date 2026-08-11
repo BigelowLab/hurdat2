@@ -1,0 +1,34 @@
+---
+title: "HURDAT2"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r}
+suppressPackageStartupMessages({
+  library(sf)
+  library(dplyr)
+  library(hurdat2)
+  library(ggplot2)
+  library(colorspace)
+})
+```
+
+```{r}
+x = read_hurdat(form = "point") |>
+  glimpse()
+```
+
+```{r}
+x = read_hurdat(form = "linestring") |>
+  glimpse()
+```
+
+```{r}
+map_hurdat(x)
+```
+```
