@@ -2,15 +2,19 @@
 % Please edit documentation in R/io.R
 \name{read_hurdat_raw}
 \alias{read_hurdat_raw}
+\alias{read_hurdat}
 \title{Read HURDAT2 data}
 \usage{
 read_hurdat_raw(filename = tail(list_hurdat(), n = 1))
+
+read_hurdat(filename = system.file("extadata/hurdat201851-2025-02272026"))
 }
 \arguments{
 \item{filename}{the name of the file}
 }
 \value{
-data frame
+\code{read_hurdat_raw} returns a data frame while \code{read_hurdat} returns
+an sf POINT data frame
 }
 \description{
 Read HURDAT2 data

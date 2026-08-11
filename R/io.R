@@ -27,7 +27,8 @@ convert_latitude = function(x = c("28.0N", "28.0N", "28.0N", "28.1N", "28.2N", "
 #' @export
 #' @seealso [AOML format description](https://www.aoml.noaa.gov/hrd/hurdat/hurdat2-format.pdf)
 #' @param filename the name of the file
-#' @return data frame
+#' @return `read_hurdat_raw` returns a data frame while `read_hurdat` returns
+#'   an sf POINT data frame
 read_hurdat_raw = function(filename = list_hurdat() |> tail(n=1)){
   
   x = readLines(filename)
@@ -124,4 +125,10 @@ system_status = function(){
     SS = "Subtropical cyclone of subtropical storm intensity (> 34 knots)",
     LO = "A low that is neither a tropical cyclone, a subtropical cyclone, nor an extratropical cyclone (of any intensity)",
     WV = "Tropical Wave (of any intensity)")
+}
+
+#' @rdname read_hurdat_raw
+#' @export
+read_hurdat = function(filename = system.file("extadata/hurdat201851-2025-02272026")){
+  sf::read_sf(filename)
 }
