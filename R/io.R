@@ -129,6 +129,20 @@ system_status = function(){
 
 #' @rdname read_hurdat_raw
 #' @export
-read_hurdat = function(filename = system.file("extadata/hurdat201851-2025-02272026")){
-  sf::read_sf(filename)
+read_hurdat = function(filename = system.file("extdata/hurdat2-1851-2025-02272026.rds",
+                                              package = "hurdat2")){
+  readRDS(filename)
+}
+
+
+#' Read coastline from Natural Earth
+#' 
+#' Made with Natural Earth. Free vector and raster map data @ naturalearthdata.com.
+#' 
+#' @export
+#' @param filename chr, the name of the file
+#' @return sfc_MULTILINESTRING geometry
+read_coast = function(filename = system.file("extdata/coastline.rds",
+                                             package = "hurdat2")){
+  readRDS(filename)
 }

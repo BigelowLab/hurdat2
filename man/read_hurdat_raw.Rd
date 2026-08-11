@@ -7,7 +7,9 @@
 \usage{
 read_hurdat_raw(filename = tail(list_hurdat(), n = 1))
 
-read_hurdat(filename = system.file("extadata/hurdat201851-2025-02272026"))
+read_hurdat(
+  filename = system.file("extdata/hurdat2-1851-2025-02272026.rds", package = "hurdat2")
+)
 }
 \arguments{
 \item{filename}{the name of the file}
