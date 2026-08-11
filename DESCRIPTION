@@ -1,0 +1,21 @@
+Package: hurdat2
+Type: Package
+Title: Serve Hurricane Data data
+Version: 0.0.1
+Author: Ben Tupper <btupper@bigelow.org>
+Maintainer: Ben Tupper <btupper@bigelow.org>
+Description: Read and analyze the HURDAT2 hurricane data tracker from National Hurricane Center.
+URL: https://github.com/BigelowLab/hurdat2
+License: MIT + file LICENSE
+Encoding: UTF-8
+Depends: R (>= 4.2.0)
+Imports:
+  rlang,
+  readr,
+  dplyr,
+  tidyr,
+  sf,
+  ggplot2,
+  colorspace
+RoxygenNote: 7.3.2
+Roxygen: list(markdown = TRUE)
