@@ -103,34 +103,19 @@ read_hurdat_raw = function(filename = list_hurdat() |> tail(n=1)){
   r
 }
 
-
-record_identifier = function(){
-  c(C = "Closest approach to a coast, not followed by a landfall",
-    G = "Genesis",
-    I = "An intensity peak in terms of both pressure and wind",
-    L = "Landfall (center of system crossing a coastline)",
-    P = "Minimum in central pressure",
-    R = "Provides additional detail on the intensity of the cyclone when rapid changes are underway",
-    S = "Change of status of the system",
-    T = "Provides additional detail on the track (position) of the cyclone",
-    W = "Maximum sustained wind speed")
-}
-
-system_status = function(){
-  c(TD = "Tropical cyclone of tropical depression intensity (< 34 knots)",
-    TS = "Tropical cyclone of tropical storm intensity (34-63 knots)",
-    HU = "Tropical cyclone of hurricane intensity (> 64 knots)",
-    EX = "Extratropical cyclone (of any intensity)",
-    SD = "Subtropical cyclone of subtropical depression intensity (< 34 knots)",
-    SS = "Subtropical cyclone of subtropical storm intensity (> 34 knots)",
-    LO = "A low that is neither a tropical cyclone, a subtropical cyclone, nor an extratropical cyclone (of any intensity)",
-    WV = "Tropical Wave (of any intensity)")
-}
-
 #' @rdname read_hurdat_raw
 #' @export
-read_hurdat = function(filename = system.file("extdata/hurdat2-1851-2025-02272026.rds",
-                                              package = "hurdat2")){
+#' @param form chr, one of "point" (default) or "linestring".  The latter
+#'   collapses point data into one-row-per-storm linestrings
+read_hurdat = function(form = c("point", "linestring")[1]){
+  
+  filename = switch(tolower(form[1]),
+                    "point"= system.file("extdata/hurdat2-1851-2025-02272026.rds",
+                                         package = "hurdat2"),
+                    "linestring" = system.file("extdata/linestring.rds",
+                                                package = "hurdat2"),
+                    stop("form not known:", form[1]))
+  
   readRDS(filename)
 }
 
@@ -145,4 +130,33 @@ read_hurdat = function(filename = system.file("extdata/hurdat2-1851-2025-0227202
 read_coast = function(filename = system.file("extdata/coastline.rds",
                                              package = "hurdat2")){
   readRDS(filename)
+}
+
+#' Retrieve a look-up table for record_id and sys_status
+#' 
+#' @export
+#' @return named character vector
+record_identifier = function(){
+  c(C = "Closest approach to a coast, not followed by a landfall",
+    G = "Genesis",
+    I = "An intensity peak in terms of both pressure and wind",
+    L = "Landfall (center of system crossing a coastline)",
+    P = "Minimum in central pressure",
+    R = "Provides additional detail on the intensity of the cyclone when rapid changes are underway",
+    S = "Change of status of the system",
+    T = "Provides additional detail on the track (position) of the cyclone",
+    W = "Maximum sustained wind speed")
+}
+
+#' @rdname record_identifier
+#' @export
+system_status = function(){
+  c(TD = "Tropical cyclone of tropical depression intensity (< 34 knots)",
+    TS = "Tropical cyclone of tropical storm intensity (34-63 knots)",
+    HU = "Tropical cyclone of hurricane intensity (> 64 knots)",
+    EX = "Extratropical cyclone (of any intensity)",
+    SD = "Subtropical cyclone of subtropical depression intensity (< 34 knots)",
+    SS = "Subtropical cyclone of subtropical storm intensity (> 34 knots)",
+    LO = "A low that is neither a tropical cyclone, a subtropical cyclone, nor an extratropical cyclone (of any intensity)",
+    WV = "Tropical Wave (of any intensity)")
 }

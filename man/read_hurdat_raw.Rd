@@ -7,12 +7,13 @@
 \usage{
 read_hurdat_raw(filename = tail(list_hurdat(), n = 1))
 
-read_hurdat(
-  filename = system.file("extdata/hurdat2-1851-2025-02272026.rds", package = "hurdat2")
-)
+read_hurdat(form = c("point", "linestring")[1])
 }
 \arguments{
 \item{filename}{the name of the file}
+
+\item{form}{chr, one of "point" (default) or "linestring".  The latter
+collapses point data into one-row-per-storm linestrings}
 }
 \value{
 \code{read_hurdat_raw} returns a data frame while \code{read_hurdat} returns
