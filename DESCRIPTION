@@ -13,7 +13,6 @@ Imports:
   rlang,
   readr,
   dplyr,
-  tidyr,
   sf,
   ggplot2,
   colorspace

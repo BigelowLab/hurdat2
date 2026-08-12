@@ -1,15 +1,39 @@
 HURDAT2
 ================
 
+An R package for accessing NOAA’s [HURDAT2 hurricane data]().
+
+### Requirements
+
+- [R v4.2+](https://www.r-project.org/)
+
+- [rlang](https://CRAN.R-project.org/package=rlang)
+
+- [dplyr](https://CRAN.R-project.org/package=dplyr)
+
+- [readr](https://CRAN.R-project.org/package=readr)
+
+- [sf](https://CRAN.R-project.org/package=sf)
+
+- [ggplot2](https://CRAN.R-project.org/package=ggplot2)
+
+- [colorspace](https://CRAN.R-project.org/package=colorspace)
+
+# Installation
+
+    remotes::install_github("BigelowLab/hurdat2")
+
+# Useage
+
 ``` r
 suppressPackageStartupMessages({
   library(sf)
   library(dplyr)
   library(hurdat2)
-  library(ggplot2)
-  library(colorspace)
 })
 ```
+
+Read as POINT data (one obseravtion per row).
 
 ``` r
 x = read_hurdat(form = "point") |>
@@ -40,6 +64,8 @@ x = read_hurdat(form = "point") |>
     ## $ wind_max_radius <dbl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
     ## $ geom            <POINT [°]> POINT (-94.8 28), POINT (-95.4 28), POINT (-96 2…
 
+Read as LINESTRING data (one storm per row)
+
 ``` r
 x = read_hurdat(form = "linestring") |>
   glimpse()
@@ -55,8 +81,10 @@ x = read_hurdat(form = "linestring") |>
     ## $ min_pres     <dbl> NA, 961, NA, NA, NA, 934, NA, NA, NA, NA, NA, NA, NA, NA,…
     ## $ geom         <LINESTRING [°]> LINESTRING (-94.8 28, -95.4..., LINESTRING (-6…
 
+Show a map of the data - grouped by 50-year interval groups.
+
 ``` r
 map_hurdat(x)
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-4-1.png)<!-- --> \`\`\`
+![](README_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->

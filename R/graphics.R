@@ -32,11 +32,9 @@ map_hurdat = function(x = read_hurdat(form = "linestring"),
     ggplot2::geom_sf(data = x,
                      #mapping = ggplot2::aes(color = .data$epoch),
                      alpha = 0.1) + 
-    #scale_fill_discrete_qualitative(palette = "Dark 3") + 
-    #scale_fill_okabe_ito(aesthetics = "fill", order = 1:9) + 
-    ggplot2::geom_sf(data = coast, color = "orange") + 
+     ggplot2::geom_sf(data = coast, color = "orange") + 
     ggplot2::coord_sf(xlim = c(-130, 63),
                       ylim = c(6, 84)) + 
-    labs(x = NULL, y = NULL, title = "HURDAT2") +
-    facet_wrap(~epoch)
+    ggplot2::labs(x = NULL, y = NULL, title = "HURDAT2") +
+    ggplot2::facet_wrap(~epoch)
 }
