@@ -43,19 +43,19 @@ suppressPackageStartupMessages({
 Read as POINT data (one obseravtion per row).
 
 ```{r}
-x = read_hurdat(form = "point") |>
+x = read_hurdat(form = "observations") |>
   glimpse()
 ```
 
 Read as LINESTRING data (one storm per row)
 
 ```{r}
-x = read_hurdat(form = "linestring") |>
+x = read_hurdat(form = "storms") |>
   glimpse()
 ```
 
-Show a map of the data - grouped by 50-year interval groups.
+Show a map of the storm track data - grouped by 50-year interval groups.
 
 ```{r}
-map_hurdat(x)
+map_hurdat(x, epoch = 50)
 ```

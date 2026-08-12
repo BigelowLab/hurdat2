@@ -4,10 +4,16 @@
 \alias{map_hurdat}
 \title{Build a map of the hurricane paths colored by 50 epoch}
 \usage{
-map_hurdat(x = read_hurdat(form = "linestring"), coast = read_coast())
+map_hurdat(
+  x = read_hurdat(form = "linestring"),
+  epoch = NULL,
+  coast = read_coast()
+)
 }
 \arguments{
 \item{x}{HURDAT sf object}
+
+\item{epoch}{num, the number of consecutive years to group by}
 
 \item{coast}{sf geometry of the coast}
 }

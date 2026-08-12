@@ -7,12 +7,12 @@
 \usage{
 read_hurdat_raw(filename = tail(list_hurdat(), n = 1))
 
-read_hurdat(form = c("point", "linestring")[1])
+read_hurdat(form = c("observation", "storm")[1])
 }
 \arguments{
 \item{filename}{the name of the file}
 
-\item{form}{chr, one of "point" (default) or "linestring".  The latter
+\item{form}{chr, one of "observation" (default) or "storm".  The latter
 collapses point data into one-row-per-storm linestrings}
 }
 \value{

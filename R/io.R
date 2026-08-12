@@ -105,15 +105,19 @@ read_hurdat_raw = function(filename = list_hurdat() |> tail(n=1)){
 
 #' @rdname read_hurdat_raw
 #' @export
-#' @param form chr, one of "point" (default) or "linestring".  The latter
+#' @param form chr, one of "observation" (default) or "storm".  The latter
 #'   collapses point data into one-row-per-storm linestrings
-read_hurdat = function(form = c("point", "linestring")[1]){
+read_hurdat = function(form = c("observation", "storm")[1]){
   
   filename = switch(tolower(form[1]),
-                    "point"= system.file("extdata/hurdat2-1851-2025-02272026.rds",
+                    "observation"= system.file("extdata/hurdat2-1851-2025-02272026.rds",
                                          package = "hurdat2"),
-                    "linestring" = system.file("extdata/linestrings.rds",
+                    "observations"= system.file("extdata/hurdat2-1851-2025-02272026.rds",
+                                               package = "hurdat2"),
+                    "storm" = system.file("extdata/storms.rds",
                                                 package = "hurdat2"),
+                    "storms" = system.file("extdata/storms.rds",
+                                          package = "hurdat2"),
                     stop("form not known:", form[1]))
   
   readRDS(filename)
